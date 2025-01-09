@@ -38,7 +38,7 @@ const SchoolForm = () => {
         className="w-full max-w-lg bg-slate-500 shadow-md rounded px-8 pt-6 pb-8"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h2 className="text-2xl font-bold mb-4 text-center">Add School</h2>
+        
 
         {/* School Name */}
         <div className="mb-4">

@@ -1,36 +1,184 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# **School List Project**
 
-First, run the development server:
+The **School List** project is a full-stack web application built using **Next.js 14**. It allows users to add, view, and delete schools from a database. The project uses **MySQL** as the database.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## **Features**
+
+- **Add Schools**: A responsive form to add school details to the database.
+- **View Schools**: A list displaying school names, addresses, and cities in a grid layout.
+- **Delete Schools**: Ability to delete a school entry directly from the list.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+
+---
+
+## **Technologies Used**
+
+- **Frontend**: Next.js, React.js, TailwindCSS
+- **Backend**: Next.js API routes
+- **Database**: MySQL
+- **Form Validation**: react-hook-form
+- **HTTP Requests**: Fetch API
+
+---
+
+## **Database Setup**
+
+### **Database Name**
+
+```sql
+schools
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **Table Name**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```sql
+schoolLists
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### **Table Structure**
 
-## Learn More
+```sql
+CREATE TABLE schoolLists (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  address TEXT NOT NULL,
+  city VARCHAR(255) NOT NULL,
+  state VARCHAR(255) NOT NULL,
+  contact VARCHAR(20),
+  image TEXT,
+  email_id VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## **Installation**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Mukeshzz/School-List.git
+   cd school-list
+   ```
 
-## Deploy on Vercel
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Configure Environment Variables:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   Create a `.env` file in the root directory and add the following:
+
+   ```env
+   DB_HOST=localhost
+   DB_PORT=your_port
+   DB_USER=root
+   DB_PASSWORD=your_password
+   DB_DATABASE=schools
+   ```
+
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Access the application:**
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## **Usage**
+
+### **1. Add a School**
+
+ **Add School** page and fill out the form. Ensure all inputs are valid before submitting.
+
+### **2. View Schools**
+
+The homepage displays a list of all schools stored in the database. You can view the school’s name, address, and city in a card layout.
+
+### **3. Delete a School**
+
+Each school card has a **Delete** button. Click the button to remove the school from the database. A confirmation prompt will appear after deletion.
+
+---
+
+## **Project Structure**
+
+```
+school-list/
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   ├── school/
+│   │   │   │   ├── addSchool/route.js    # Add school API
+│   │   │   │   ├── getSchool/route.js # Get schools API
+│   │   │   │   ├── deleteSchool/route.js # Delete school API
+│   │   ├── get-school/
+│   │   │   ├── page.js             # School List Page
+│   │   |
+│   │   ├── page.js                 # Add School Page
+│   ├── config/
+│   │   ├── db.js                   # Database connection
+├── public/
+├── .env                            # Environment variables
+├── README.md                       # Project documentation
+```
+
+---
+
+## **API Endpoints**
+
+### **Add School**
+- **Method**: `POST`
+- **Endpoint**: `/api/school/add`
+- **Request Body**:
+  ```json
+  {
+    "name": "School Name",
+    "address": "School Address",
+    "city": "School City",
+    "state": "School State",
+    "contact": "1234567890",
+    "image": "text",
+    "email_id": "school@example.com"
+  }
+  ```
+
+### **Get Schools**
+- **Method**: `GET`
+- **Endpoint**: `/api/school/getSchool`
+
+### **Delete School**
+- **Method**: `DELETE`
+- **Endpoint**: `/api/school/delete?id={school_id}`
+
+---
+
+## **Future Enhancements**
+
+- Add search and filter functionality.
+- Include pagination for large datasets.
+- Add the ability to edit school details.
+
+---
+
+## **Screenshots**
+
+### **Add School Page**
+![Add School Page](./public/images/add-school-page.jpg "Add School Page")
+
+
+### **School List Page**
+![School List Page](./public/images/school-list-page.jpg "School List Page")
+
+
+---
+
+## **License**
+
+This project is open-source and free to use under the MIT License.
+
+---

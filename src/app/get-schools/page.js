@@ -83,7 +83,7 @@ const SchoolList = () => {
               <p className="text-slate-700">
                 <strong>Email:</strong> {school.email_id}
               </p>
-              <button onClick={() => handleDelete(school.id)} className='bg-red-500 rounded p-1 my-2  font-semibold'>
+              <button onClick={() => handleDelete(school.id)} className='bg-red-500 rounded px-3 py-1 my-2  font-semibold'>
                 Delete
               </button>
             </div>
